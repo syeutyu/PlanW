@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PlanW</string>
+    <string name="facebook_app_id">1391081634284434</string>
+    <string name="fb_login_protocol_scheme">fb1391081634284434</string>
+    <string name="title_activity_main_show">MainShow</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_tab_fragment4">TabFragment4</string>
+    <string name="title_activity_tab_fragment">TabFragment</string>
+
+</resources>

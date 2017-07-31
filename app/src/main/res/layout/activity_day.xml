@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.junier.Day">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <CalendarView
+            android:id="@+id/cal"
+            android:layout_width="match_parent"
+            android:showWeekNumber="false"
+            android:layout_height="400dp">
+        </CalendarView>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cal"
+            android:layout_alignParentRight="true"
+            android:text="현재 선택된 날짜"
+            />
+
+        <TextView
+            android:id="@+id/datebelow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/date"
+            android:layout_alignParentRight="true"
+            android:lines="8"
+            />
+
+        <Button
+            android:id="@+id/save"
+            style="@style/btnStylelivid_brown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cal"
+            android:layout_margin="10dp"
+            android:text="일정 저장"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
