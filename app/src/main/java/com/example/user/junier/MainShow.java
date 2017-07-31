@@ -21,7 +21,7 @@ public class MainShow extends AppCompatActivity {
         setContentView(R.layout.activity_main_show);
         Intent intent = getIntent();
         uname = intent.getStringExtra("name");
-        Log.v("Uname is : ",uname);
+        Log.v("name is : ",uname);
 
 
                 // Initializing the TabLayout

@@ -22,8 +22,8 @@ import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONObject;
 
-import static com.example.user.junier.MainActivity.version;
 import static com.example.user.junier.TabFragment2.Result_Code;
+import static com.example.user.junier.TabFragment2.version;
 
 public class Signup extends AppCompatActivity {
     private static LoginButton loginButton;

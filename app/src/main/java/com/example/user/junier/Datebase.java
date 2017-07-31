@@ -11,6 +11,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.UUID;
+
 import static com.example.user.junier.MainActivity.tag;
 
 /**
@@ -18,7 +20,7 @@ import static com.example.user.junier.MainActivity.tag;
  */
 
 public class Datebase extends SQLiteOpenHelper {
-    public static final String Schema = "PlanWT.db";
+    public static final String Schema = "test.db";
 
     public Datebase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -36,7 +38,7 @@ public class Datebase extends SQLiteOpenHelper {
 
     public void createDB(SQLiteDatabase db) { //DB생성
         Log.d(tag, "생성완료");
-        String sql = "CREATE TABLE PlanWT (id TEXT DEFAULT ' ' ,password TEXT DEFAULT ' ',name TEXT DEFAULT ' ',date TEXT DEFAULT ' ',purpose TEXT DEFAULT ' ')"; //이부분 수정이 필요합니다
+        String sql = "CREATE TABLE test(num TEXT UNIQUE , id TEXT , password TEXT , name TEXT , date TEXT , purpose TEXT ); "; //이부분 수정이 필요합니다
         try {
             db.execSQL(sql);
         } catch (SQLException e) {
@@ -47,7 +49,7 @@ public class Datebase extends SQLiteOpenHelper {
     public void updateDate(String key, String data, String date) { //수정하기 부분으로 변경하고
         SQLiteDatabase db = getWritableDatabase();
         try {
-            String sql = "UPDATE  PlanWT SET date = '" + date + "', purpose = '" + data + "' WHERE id = '" + key + "';";
+            String sql = "UPDATE  test SET date = '" + date + "', purpose = '" + data + "' WHERE id = '" + key + "';";
             Log.d(tag, sql);
             db.execSQL(sql);
         } catch (Exception e) {
@@ -55,10 +57,10 @@ public class Datebase extends SQLiteOpenHelper {
         }
     }
 
-    public void insertDate(String key, String data, String date) { //저장사항부분
+    public void insertDate(String name, String data, String date) { //저장사항부분
         SQLiteDatabase db = getWritableDatabase();
         try {
-            String sql = "INSERT INTO PlanWT (id ,date, purpose) VALUES('" + key + "','" + date + "','" + data + "');";
+            String sql = "INSERT INTO test (name ,date, purpose) VALUES('" + name + "','" + date + "','" + data + "');";
             Log.d(tag, sql);
             db.execSQL(sql);
         } catch (Exception e) {
@@ -69,8 +71,10 @@ public class Datebase extends SQLiteOpenHelper {
 
     public void insertSign(String id, String password, String name) { //회원가입시 들어가는 정보
         SQLiteDatabase db = getWritableDatabase();
+        String num = makenum();
+        Log.d(tag,num);
         try {
-            String sql = "INSERT INTO PlanWT (id, password,name) VALUES('" + id + "','" + password + "','" + name + "')";
+            String sql = "INSERT INTO test (num,id, password,name) VALUES('" + num + "','" + id + "','" + password + "','" + name + "');";
             Log.d(tag, sql);
             db.execSQL(sql);
         } catch (Exception e) {
@@ -78,18 +82,26 @@ public class Datebase extends SQLiteOpenHelper {
         }
     }
 
+    public void drop() {
+        SQLiteDatabase db = getWritableDatabase();
+        String sql = "DROP TABLE test";
+        db.execSQL(sql);
+    }
+
     public JSONObject getSign(String id, String password) { //로그인시 정보 비교와 정보 제공
         SQLiteDatabase db = getReadableDatabase();
+//WHERE id ='" + id + "' AND " + "password = '" + password + "';"
         JSONObject jsonObject = new JSONObject();
-        Cursor cursor = db.rawQuery("SELECT * FROM PlanWT WHERE id ='" + id + "' AND " + "password = '" + password + "';", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM test WHERE id = '" + id + "' AND " + " password = '" + password + "';", null);
 
         while (cursor.moveToNext()) {
             try {
-                jsonObject.put("id", cursor.getString(0));
-                jsonObject.put("password", cursor.getString(1));
-                jsonObject.put("name", cursor.getString(2));
-                jsonObject.put("date", cursor.getString(3));
-                jsonObject.put("purpose", cursor.getString(4));
+                jsonObject.put("num", cursor.getString(0));
+                jsonObject.put("id", cursor.getString(1));
+                jsonObject.put("password", cursor.getString(2));
+                jsonObject.put("name", cursor.getString(3));
+                jsonObject.put("date", cursor.getString(4));
+                jsonObject.put("purpose", cursor.getString(5));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -98,18 +110,19 @@ public class Datebase extends SQLiteOpenHelper {
         return jsonObject;
     }
 
-    public JSONArray getPlan(String id) {
+    public JSONArray getPlan(String id) { //메인 페이지에서 데이터 갱신시 JsonArray로 해당하는 이름의사용자에게 데이터줌
         SQLiteDatabase db = getReadableDatabase();
         JSONObject jsonObject = new JSONObject();
         JSONArray jsonArray = new JSONArray();
-        Cursor cursor = db.rawQuery("SELECT * FROM PlanWT WHERE id = '" + id + "';", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM test WHERE name = '" + id + "';", null);
         while (cursor.moveToNext()) {
             try {
-                jsonObject.put("id", cursor.getString(0));
-                jsonObject.put("password", cursor.getString(1));
-                jsonObject.put("name", cursor.getString(2));
-                jsonObject.put("date", cursor.getString(3));
-                jsonObject.put("purpose", cursor.getString(4));
+                jsonObject.put("num", cursor.getString(0));
+                jsonObject.put("id", cursor.getString(1));
+                jsonObject.put("password", cursor.getString(2));
+                jsonObject.put("name", cursor.getString(3));
+                jsonObject.put("date", cursor.getString(4));
+                jsonObject.put("purpose", cursor.getString(5));
                 jsonArray.put(jsonObject);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -118,6 +131,10 @@ public class Datebase extends SQLiteOpenHelper {
         Log.d(tag, String.valueOf(jsonArray));
         return jsonArray;
 
+    }
+
+    public String makenum() {
+        return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
 }

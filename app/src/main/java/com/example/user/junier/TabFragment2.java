@@ -28,7 +28,7 @@ public class TabFragment2 extends Fragment {
     public static final String tag = "로그";
     public static final int Result_Code = 1001;
     private static String purpose;
-    public static final int version = 1;
+    public static final int version = 2;
     private Datebase helper;
 
     public TabFragment2(String uname) {

@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -24,14 +25,16 @@ import static com.example.user.junier.TabFragment2.version;
 public class TabFragment1 extends Fragment {
     private static String uname;
     private RelativeLayout linearLayout;
-    private TextView count, fini,pur1,pur2,pur3,pur4;
+    private TextView count, fini, pur1, pur2, pur3, pur4;
     private ImageButton imageButton;
     private JSONArray jsonArray;
     private Datebase database;
+    private String date, purpose;
+    private JSONObject jsonObject;
     private ArrayList<String> list = new ArrayList<>();
 
     public TabFragment1(String uname) {
-        Log.d(tag,uname);
+        Log.d(tag, uname);
         this.uname = uname;
     } // key값 얻어오기
 
@@ -40,14 +43,36 @@ public class TabFragment1 extends Fragment {
         View v = inflater.inflate(R.layout.tab_fragment_1, container, false);
         getLayout(v);
         database = new Datebase(getActivity(), Datebase.Schema, null, version);
+
         imageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 jsonArray = database.getPlan(uname);
-                try{
-                    Log.d("jsonArray 넘겨져 온 값 : ",String.valueOf(jsonArray));
-                }catch(Exception e){
+                try {
+                    // 나오는 데이터 처리해주고 setText를 이용해서 출력해주기
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+
+                        jsonObject = jsonArray.getJSONObject(i+1);
+                        purpose = jsonObject.getString("purpose");
+                        date = jsonObject.getString("date");
+                        if (i == 0) {
+                            pur1.setText(purpose);
+                        } else if (i == 1) {
+                            pur2.setText(purpose);
+
+                        } else if (i == 2) {
+                            pur3.setText(purpose);
+
+                        } else if (i == 3) {
+                            pur4.setText(purpose);
+                        }
+                    }
+                    count.setText("2017 07 31");
+                    fini.setText(String.valueOf(jsonArray.length()));
+
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 

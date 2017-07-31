@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.example.user.junier.TabFragment2.version;
+
 public class MainActivity extends AppCompatActivity {
     public static final String tag = "로그";
     public Context context = this;
@@ -20,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private TextInputEditText text;
     private TextView daytext;
     private Button In;
-    public static final int version = 1;
     Datebase helper;
     SQLiteDatabase database;
     @Override
