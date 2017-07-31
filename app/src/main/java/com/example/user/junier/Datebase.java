@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -97,9 +98,10 @@ public class Datebase extends SQLiteOpenHelper {
         return jsonObject;
     }
 
-    public JSONObject getPlan(String id) {
+    public JSONArray getPlan(String id) {
         SQLiteDatabase db = getReadableDatabase();
         JSONObject jsonObject = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
         Cursor cursor = db.rawQuery("SELECT * FROM PlanWT WHERE id = '" + id + "';", null);
         while (cursor.moveToNext()) {
             try {
@@ -108,11 +110,14 @@ public class Datebase extends SQLiteOpenHelper {
                 jsonObject.put("name", cursor.getString(2));
                 jsonObject.put("date", cursor.getString(3));
                 jsonObject.put("purpose", cursor.getString(4));
+                jsonArray.put(jsonObject);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        Log.d(tag, String.valueOf(jsonObject));
-        return jsonObject;
+        Log.d(tag, String.valueOf(jsonArray));
+        return jsonArray;
+
     }
+
 }

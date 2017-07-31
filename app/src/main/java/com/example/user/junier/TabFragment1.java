@@ -10,24 +10,28 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 import java.util.ArrayList;
+
+import static com.example.user.junier.MainActivity.tag;
+import static com.example.user.junier.TabFragment2.version;
 
 /**
  * Created by user on 2017-07-28.
  */
 
 public class TabFragment1 extends Fragment {
-    private String uname;
+    private static String uname;
     private RelativeLayout linearLayout;
     private TextView count, fini,pur1,pur2,pur3,pur4;
-    private Datebase database;
     private ImageButton imageButton;
-    private JSONObject jsonObject;
+    private JSONArray jsonArray;
+    private Datebase database;
     private ArrayList<String> list = new ArrayList<>();
 
     public TabFragment1(String uname) {
+        Log.d(tag,uname);
         this.uname = uname;
     } // key값 얻어오기
 
@@ -35,13 +39,14 @@ public class TabFragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.tab_fragment_1, container, false);
         getLayout(v);
+        database = new Datebase(getActivity(), Datebase.Schema, null, version);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                jsonObject = database.getPlan(uname);
+                jsonArray = database.getPlan(uname);
                 try{
-                    Log.d("Json Object로 넘겨져 온 값 : ",String.valueOf(jsonObject));
+                    Log.d("jsonArray 넘겨져 온 값 : ",String.valueOf(jsonArray));
                 }catch(Exception e){
                     e.printStackTrace();
                 }
