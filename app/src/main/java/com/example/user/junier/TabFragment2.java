@@ -1,7 +1,6 @@
 package com.example.user.junier;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
@@ -31,7 +30,6 @@ public class TabFragment2 extends Fragment {
     private static String purpose;
     public static final int version = 1;
     private Datebase helper;
-    private SQLiteDatabase database;
 
     public TabFragment2(String uname) {
         this.uname = uname;
@@ -43,7 +41,6 @@ public class TabFragment2 extends Fragment {
 
         View v = inflater.inflate(R.layout.activity_main, container, false);
         helper = new Datebase(getActivity(), Datebase.Schema, null, version);
-        database = helper.getWritableDatabase();
         setting(v);
 
         In.setOnClickListener(new View.OnClickListener() {

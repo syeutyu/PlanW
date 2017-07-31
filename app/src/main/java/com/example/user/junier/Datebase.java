@@ -10,6 +10,8 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static com.example.user.junier.MainActivity.tag;
+
 /**
  * Created by user on 2017-07-29.
  */
@@ -31,8 +33,8 @@ public class Datebase extends SQLiteOpenHelper {
 
     }
 
-    public void createDB(SQLiteDatabase db) {
-        Log.d("SQLite DB", "생성완료");
+    public void createDB(SQLiteDatabase db) { //DB생성
+        Log.d(tag, "생성완료");
         String sql = "CREATE TABLE PlanWT (id TEXT DEFAULT ' ' ,password TEXT DEFAULT ' ',name TEXT DEFAULT ' ',date TEXT DEFAULT ' ',purpose TEXT DEFAULT ' ')"; //이부분 수정이 필요합니다
         try {
             db.execSQL(sql);
@@ -45,7 +47,7 @@ public class Datebase extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         try {
             String sql = "UPDATE  PlanWT SET date = '" + date + "', purpose = '" + data + "' WHERE id = '" + key + "';";
-            Log.d("Inser Date SQL", sql);
+            Log.d(tag, sql);
             db.execSQL(sql);
         } catch (Exception e) {
             e.getMessage();
@@ -56,7 +58,7 @@ public class Datebase extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         try {
             String sql = "INSERT INTO PlanWT (id ,date, purpose) VALUES('" + key + "','" + date + "','" + data + "');";
-            Log.d("Inser Date SQL", sql);
+            Log.d(tag, sql);
             db.execSQL(sql);
         } catch (Exception e) {
             e.getMessage();
@@ -64,18 +66,18 @@ public class Datebase extends SQLiteOpenHelper {
     }
 
 
-    public void insertSign(String id, String password, String name) {
+    public void insertSign(String id, String password, String name) { //회원가입시 들어가는 정보
         SQLiteDatabase db = getWritableDatabase();
         try {
             String sql = "INSERT INTO PlanWT (id, password,name) VALUES('" + id + "','" + password + "','" + name + "')";
-            Log.d("Inser Sign SQL", sql);
+            Log.d(tag, sql);
             db.execSQL(sql);
         } catch (Exception e) {
             e.getMessage();
         }
     }
 
-    public JSONObject getSign(String id, String password) {
+    public JSONObject getSign(String id, String password) { //로그인시 정보 비교와 정보 제공
         SQLiteDatabase db = getReadableDatabase();
         JSONObject jsonObject = new JSONObject();
         Cursor cursor = db.rawQuery("SELECT * FROM PlanWT WHERE id ='" + id + "' AND " + "password = '" + password + "';", null);
@@ -91,8 +93,26 @@ public class Datebase extends SQLiteOpenHelper {
                 e.printStackTrace();
             }
         }
-        Log.d("로그인 찾은 데이터 값 : ", String.valueOf(jsonObject));
+        Log.d(tag, String.valueOf(jsonObject));
         return jsonObject;
     }
 
+    public JSONObject getPlan(String id) {
+        SQLiteDatabase db = getReadableDatabase();
+        JSONObject jsonObject = new JSONObject();
+        Cursor cursor = db.rawQuery("SELECT * FROM PlanWT WHERE id = '" + id + "';", null);
+        while (cursor.moveToNext()) {
+            try {
+                jsonObject.put("id", cursor.getString(0));
+                jsonObject.put("password", cursor.getString(1));
+                jsonObject.put("name", cursor.getString(2));
+                jsonObject.put("date", cursor.getString(3));
+                jsonObject.put("purpose", cursor.getString(4));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        Log.d(tag, String.valueOf(jsonObject));
+        return jsonObject;
+    }
 }

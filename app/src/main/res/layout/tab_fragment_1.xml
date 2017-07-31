@@ -13,88 +13,101 @@
         android:background="@drawable/bee"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/Datetext"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/re"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="#00ffffff"
+            android:src="@drawable/re" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_toLeftOf="@id/re"
+            android:text="Data Update"
             android:textColor="#ffff"
             android:textSize="20sp" />
+
+
         <RelativeLayout
-            android:layout_below="@id/Datetext"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@id/re">
+
             <View
                 android:id="@+id/cen"
                 android:layout_width="2dp"
                 android:layout_height="125dp"
                 android:layout_centerInParent="true"
                 android:background="#e1e1e1" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toLeftOf="@id/cen">
+
                 <TextView
                     android:id="@+id/su1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#ffff"
-                    android:layout_marginTop="30dp"
                     android:layout_centerHorizontal="true"
-                    android:textSize="20sp"
-                    android:text="성취율"
-                    />
+                    android:layout_marginTop="30dp"
+                    android:text="Date"
+                    android:textColor="#ffff"
+                    android:textSize="20sp" />
+
                 <TextView
                     android:id="@+id/count"
-                    android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/su1"
                     android:layout_centerInParent="true"
-                    android:textSize="30sp"
+                    android:layout_marginTop="20dp"
                     android:textColor="#ffff"
-                    />
+                    android:textSize="30sp" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/cen">
+
                 <TextView
                     android:id="@+id/su2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#ffff"
-                    android:layout_marginTop="30dp"
                     android:layout_centerHorizontal="true"
-                    android:textSize="20sp"
-                    android:text="Date"
-                    />
+                    android:layout_marginTop="30dp"
+                    android:text="진행중 목표 수"
+                    android:textColor="#ffff"
+                    android:textSize="20sp" />
+
                 <TextView
-                    android:id="@+id/today"
-                    android:layout_marginTop="20dp"
+                    android:id="@+id/fini"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/su2"
                     android:layout_centerInParent="true"
-                    android:textSize="30sp"
+                    android:layout_marginTop="20dp"
                     android:textColor="#ffff"
-                    />
+                    android:textSize="30sp" />
             </RelativeLayout>
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:layout_toRightOf="@id/cen"
-                />
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
-            
+
         </RelativeLayout>
 
 
@@ -130,12 +143,14 @@
                 android:src="@drawable/tiem_w" />
 
             <TextView
+                android:id="@+id/pur1"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_margin="10dp"
                 android:layout_toRightOf="@id/img1"
                 android:layout_weight="1"
-                android:text="adasdfsf"
+                android:gravity="center"
+                android:text="Please Click Update Button"
                 android:textColor="#ffff" />
         </RelativeLayout>
 
@@ -155,12 +170,14 @@
                 android:src="@drawable/tiem_w" />
 
             <TextView
+                android:id="@+id/pur2"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_margin="10dp"
                 android:layout_toRightOf="@id/img2"
                 android:layout_weight="1"
-                android:text="adasdfsf"
+                android:gravity="center"
+                android:text="Please Click Update Button"
                 android:textColor="#ffff" />
         </RelativeLayout>
 
@@ -179,12 +196,14 @@
                 android:src="@drawable/time" />
 
             <TextView
+                android:id="@+id/pur3"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_margin="10dp"
                 android:layout_toRightOf="@id/img3"
                 android:layout_weight="1"
-                android:text="adasdfsf" />
+                android:gravity="center"
+                android:text="Please Click Update Button" />
 
         </RelativeLayout>
 
@@ -203,12 +222,14 @@
 
             <TextView
 
+                android:id="@+id/pur4"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_margin="10dp"
                 android:layout_toRightOf="@id/img5"
                 android:layout_weight="1"
-                android:text="adasdfsf" />
+                android:gravity="center"
+                android:text="Please Click Update Button" />
 
         </RelativeLayout>
 
