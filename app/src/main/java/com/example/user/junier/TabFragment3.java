@@ -1,11 +1,13 @@
 package com.example.user.junier;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -34,8 +36,38 @@ public class TabFragment3 extends Fragment {
         adapter.addItem(ContextCompat.getDrawable(getActivity(),R.drawable.user),"  User Info");
         adapter.addItem(ContextCompat.getDrawable(getActivity(),R.drawable.logout),"  Log out");
         adapter.addItem(ContextCompat.getDrawable(getActivity(),R.drawable.plock),"  Phone Lock");
-        adapter.addItem(ContextCompat.getDrawable(getActivity(),R.drawable.plock),"  Phone Lock");
+        adapter.addItem(ContextCompat.getDrawable(getActivity(),R.drawable.facebook),"  Facebook");
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                switch (i){
+                    case 0 :{
+                        Intent intent = new Intent(getActivity(),UserInfo.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 1 :{
+                        Intent intent = new Intent(getActivity(),Signin.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }
+                    case 2 :{
+                        Intent intent = new Intent(getActivity(),Plock.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 3:{
+                        Intent intent = new Intent(getActivity(),Facebook.class);
+                        startActivity(intent);
+                        break;
+                    }
+
+                }
+            }
+
+
+        });
         return v;
     }
 
