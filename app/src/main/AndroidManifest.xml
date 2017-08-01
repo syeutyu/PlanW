@@ -26,8 +26,7 @@
         <activity
             android:name=".Signup"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".MainShow" />
+        <activity android:name=".MainShow" />
         <activity
             android:name=".SplashActivity"
             android:theme="@android:style/Theme.NoTitleBar">
@@ -62,8 +61,7 @@
         <activity
             android:name=".Signin"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
+        <activity android:name=".list_Item"></activity>
     </application>
 
 </manifest>
