@@ -43,10 +43,10 @@ public class Day extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
 
-                Datecheck = getNowDate(year,month,dayOfMonth);
-                num = (month + 1) + "," + dayOfMonth+"  ";
+                Datecheck = getNowDate(year, month, dayOfMonth);
+                num = (month + 1) + "," + dayOfMonth + "  ";
 
-                addAndDeleteDate(context, day,num);
+                addAndDeleteDate(context, day, num);
             }
         });
 
@@ -56,51 +56,44 @@ public class Day extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra("Date",daydata);
-                setResult(Result_Code,intent);
+                intent.putExtra("Date", daydata);
+                setResult(Result_Code, intent);
                 finish();
 
             }
         });
     }
 
-    public Boolean getNowDate(int year,int month, int dayOfMonth) {
+    public Boolean getNowDate(int year, int month, int dayOfMonth) {
         Calendar aDate = Calendar.getInstance();
         Calendar bDate = Calendar.getInstance();
-        aDate.set(year,month,dayOfMonth);
+        aDate.set(year, month, dayOfMonth);
 
-        aDate.set( Calendar.HOUR_OF_DAY, 0 );
-         aDate.set( Calendar.MINUTE, 0 );
-         aDate.set( Calendar.SECOND, 0 );
-         aDate.set( Calendar.MILLISECOND, 0 );
-         bDate.set( Calendar.HOUR_OF_DAY, 0 );
-         bDate.set( Calendar.MINUTE, 0 );
-         bDate.set( Calendar.SECOND, 0 );
-         bDate.set( Calendar.MILLISECOND, 0 );
+        aDate.set(Calendar.HOUR_OF_DAY, 0);
+        aDate.set(Calendar.MINUTE, 0);
+        aDate.set(Calendar.SECOND, 0);
+        aDate.set(Calendar.MILLISECOND, 0);
 
-        Log.v(tag,String.valueOf(aDate));
-        Log.v(tag,String.valueOf(bDate));
 
-        if(aDate.after(bDate)){
-            Log.v(tag,"일수가 더 큼");
+        bDate.set(Calendar.HOUR_OF_DAY, 0);
+        bDate.set(Calendar.MINUTE, 0);
+        bDate.set(Calendar.SECOND, 0);
+        bDate.set(Calendar.MILLISECOND, 0);
+
+        if (aDate.after(bDate)) {
+            Log.v(tag, "일수가 더 큼");
             return true;
-        } else if (aDate.before(bDate)){
-            Log.v(tag,"일수가 더 작음");
+        } else if (aDate.before(bDate)) {
+            Log.v(tag, "일수가 더 작음");
             return false;
-        } else{
-            Log.v(tag,"일수가 같음");
+        } else {
+            Log.v(tag, "일수가 같음");
             return true;
         }
 
-        //SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        //Log.d("날자", String.valueOf(sdf));
-        //String getTime = sdf.format(date);
-
-        //int time = Integer.parseInt(getTime);
-
     }
 
-    public void addAndDeleteDate(Context context, TextView day,String num) {
+    public void addAndDeleteDate(Context context, TextView day, String num) {
         Boolean check = true;
         String data = null;
         daydata = null;
@@ -110,7 +103,7 @@ public class Day extends AppCompatActivity {
                 for (int i = 0; i < arr.size(); i++) {
 
                     if (num.equals(arr.get(i))) {
-                    Log.d("일치하는 데이터 찾음",arr.get(i));
+                        Log.d("일치하는 데이터 찾음", arr.get(i));
                         check = false;
                         break;
                     } else {

@@ -13,7 +13,9 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static com.example.user.junier.MainActivity.tag;
 import static com.example.user.junier.TabFragment2.version;
@@ -27,10 +29,9 @@ public class TabFragment1 extends Fragment {
     private RelativeLayout linearLayout;
     private TextView count, fini, pur1, pur2, pur3, pur4;
     private ImageButton imageButton;
-    private JSONArray jsonArray;
     private Datebase database;
     private String date, purpose;
-    private JSONObject jsonObject;
+    private JSONArray jsonArray;
     private ArrayList<String> list = new ArrayList<>();
 
     public TabFragment1(String uname) {
@@ -49,32 +50,8 @@ public class TabFragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 jsonArray = database.getPlan(uname);
-                try {
-                    // 나오는 데이터 처리해주고 setText를 이용해서 출력해주기
-
-                    for (int i = 0; i < jsonArray.length(); i++) {
-
-                        jsonObject = jsonArray.getJSONObject(i+1);
-                        purpose = jsonObject.getString("purpose");
-                        date = jsonObject.getString("date");
-                        if (i == 0) {
-                            pur1.setText(purpose);
-                        } else if (i == 1) {
-                            pur2.setText(purpose);
-
-                        } else if (i == 2) {
-                            pur3.setText(purpose);
-
-                        } else if (i == 3) {
-                            pur4.setText(purpose);
-                        }
-                    }
-                    count.setText("2017 07 31");
-                    fini.setText(String.valueOf(jsonArray.length()));
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                Log.d("json Ojbect get plan :", String.valueOf(jsonArray));
+                setText(jsonArray);
 
             }
         });
@@ -92,6 +69,48 @@ public class TabFragment1 extends Fragment {
         pur4 = v.findViewById(R.id.pur4);
         linearLayout = v.findViewById(R.id.img);
         linearLayout.getBackground().setAlpha(120);
+    }
+
+    private void setText(JSONArray jsonArray) {
+
+        try {
+
+            for (int i = 1; i < jsonArray.length(); i++) {
+
+                JSONObject JsonData = jsonArray.getJSONObject(i);
+                Log.d(tag, String.valueOf(JsonData));
+                purpose = JsonData.getString("purpose");
+                date = JsonData.getString("date");
+                if (i == 1) {
+                    pur1.setText(purpose);
+                } else if (i == 2) {
+                    pur2.setText(purpose);
+
+                } else if (i == 3) {
+                    pur3.setText(purpose);
+
+                } else if (i == 4) {
+                    pur4.setText(purpose);
+                }
+
+            }
+
+            count.setText(getTime());
+            fini.setText(String.valueOf(jsonArray.length()-1));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private String getTime(){
+        long time  = System.currentTimeMillis();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String day = simpleDateFormat.format(new Date(time));
+        Log.d("오늘 날짜",day);
+
+        return day;
     }
 }
 

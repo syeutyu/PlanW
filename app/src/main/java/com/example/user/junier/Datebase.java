@@ -112,24 +112,27 @@ public class Datebase extends SQLiteOpenHelper {
 
     public JSONArray getPlan(String id) { //메인 페이지에서 데이터 갱신시 JsonArray로 해당하는 이름의사용자에게 데이터줌
         SQLiteDatabase db = getReadableDatabase();
-        JSONObject jsonObject = new JSONObject();
-        JSONArray jsonArray = new JSONArray();
+        JSONArray jsonObject = new JSONArray();
+        int i = 1;
         Cursor cursor = db.rawQuery("SELECT * FROM test WHERE name = '" + id + "';", null);
         while (cursor.moveToNext()) {
             try {
-                jsonObject.put("num", cursor.getString(0));
-                jsonObject.put("id", cursor.getString(1));
-                jsonObject.put("password", cursor.getString(2));
-                jsonObject.put("name", cursor.getString(3));
-                jsonObject.put("date", cursor.getString(4));
-                jsonObject.put("purpose", cursor.getString(5));
-                jsonArray.put(jsonObject);
+                String count = "count"+i;
+                JSONObject jsono = new JSONObject();
+                jsono.put("num", cursor.getString(0));
+                jsono.put("id", cursor.getString(1));
+                jsono.put("password", cursor.getString(2));
+                jsono.put("name", cursor.getString(3));
+                jsono.put("date", cursor.getString(4));
+                jsono.put("purpose", cursor.getString(5));
+                jsonObject.put(jsono);
+                Log.d(tag+"Jsonarray ", String.valueOf(jsonObject));
+                i++;
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        Log.d(tag, String.valueOf(jsonArray));
-        return jsonArray;
+        return jsonObject;
 
     }
 
