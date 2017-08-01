@@ -27,7 +27,7 @@ import static com.example.user.junier.TabFragment2.version;
 public class TabFragment1 extends Fragment {
     private static String uname;
     private RelativeLayout linearLayout;
-    private TextView count, fini, pur1, pur2, pur3, pur4;
+    private TextView count, fini, pur1, pur2, pur3, pur4,datet1,datet2,datet3,datet4;
     private ImageButton imageButton;
     private Datebase database;
     private String date, purpose;
@@ -67,6 +67,10 @@ public class TabFragment1 extends Fragment {
         pur2 = v.findViewById(R.id.pur2);
         pur3 = v.findViewById(R.id.pur3);
         pur4 = v.findViewById(R.id.pur4);
+        datet1 = v.findViewById(R.id.datet1);
+        datet2 = v.findViewById(R.id.datet2);
+        datet3 = v.findViewById(R.id.datet3);
+        datet4 = v.findViewById(R.id.datet4);
         linearLayout = v.findViewById(R.id.img);
         linearLayout.getBackground().setAlpha(120);
     }
@@ -82,15 +86,19 @@ public class TabFragment1 extends Fragment {
                 purpose = JsonData.getString("purpose");
                 date = JsonData.getString("date");
                 if (i == 1) {
-                    pur1.setText(purpose);
+                    datet1.setText("Plan Date is :"+date);
+                    pur1.setText("Plan Purpose is : "+purpose);
                 } else if (i == 2) {
-                    pur2.setText(purpose);
+                    datet2.setText("Plan Date is :"+date);
+                    pur2.setText("Plan Purpose is : "+purpose);
 
                 } else if (i == 3) {
-                    pur3.setText(purpose);
+                    datet3.setText("Plan Date is :"+date);
+                    pur3.setText("Plan Purpose is : "+purpose);
 
                 } else if (i == 4) {
-                    pur4.setText(purpose);
+                    datet4.setText("Plan Date is :"+date);
+                    pur4.setText("Plan Purpose is : "+purpose);
                 }
 
             }

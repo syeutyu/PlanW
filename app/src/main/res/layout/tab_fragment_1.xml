@@ -51,20 +51,9 @@
                 android:layout_toLeftOf="@id/cen">
 
                 <TextView
-                    android:id="@+id/su1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
-                    android:text="Date"
-                    android:textColor="#ffff"
-                    android:textSize="20sp" />
-
-                <TextView
                     android:id="@+id/count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/su1"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="20dp"
                     android:textColor="#ffff"
@@ -77,24 +66,25 @@
                 android:layout_toRightOf="@id/cen">
 
                 <TextView
-                    android:id="@+id/su2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
-                    android:text="진행중 목표 수"
-                    android:textColor="#ffff"
-                    android:textSize="20sp" />
-
-                <TextView
                     android:id="@+id/fini"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/su2"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="20dp"
                     android:textColor="#ffff"
                     android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/su2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/fini"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:text="진행중 목표 수"
+                    android:textColor="#ffff"
+                    android:textSize="18sp" />
+
             </RelativeLayout>
 
 
@@ -144,13 +134,25 @@
 
             <TextView
                 android:id="@+id/pur1"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/img1"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center|left"
                 android:text="Please Click Update Button"
+                android:textColor="#ffff" />
+
+            <TextView
+                android:id="@+id/datet1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@id/pur1"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/img1"
+                android:gravity="center|left"
                 android:textColor="#ffff" />
         </RelativeLayout>
 
@@ -171,13 +173,26 @@
 
             <TextView
                 android:id="@+id/pur2"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"
+
                 android:layout_toRightOf="@id/img2"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center|left"
                 android:text="Please Click Update Button"
+                android:textColor="#ffff" />
+
+            <TextView
+                android:id="@+id/datet2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_above="@id/pur2"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/img2"
+                android:gravity="center|left"
                 android:textColor="#ffff" />
         </RelativeLayout>
 
@@ -197,13 +212,25 @@
 
             <TextView
                 android:id="@+id/pur3"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:textSize="18sp"
+
                 android:layout_toRightOf="@id/img3"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center|left"
                 android:text="Please Click Update Button" />
+
+            <TextView
+                android:id="@+id/datet3"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_above="@id/pur3"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/img3"
+                android:gravity="center|left" />
 
         </RelativeLayout>
 
@@ -214,7 +241,7 @@
             android:background="#ffff">
 
             <ImageView
-                android:id="@+id/img5"
+                android:id="@+id/img4"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -223,13 +250,24 @@
             <TextView
 
                 android:id="@+id/pur4"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:layout_toRightOf="@id/img5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/img4"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:textSize="18sp"
+                android:gravity="center|left"
                 android:text="Please Click Update Button" />
+
+            <TextView
+                android:id="@+id/datet4"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_above="@id/pur4"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/img4"
+                android:gravity="center|left" />
 
         </RelativeLayout>
 

@@ -72,7 +72,7 @@ public class Datebase extends SQLiteOpenHelper {
     public void insertSign(String id, String password, String name) { //회원가입시 들어가는 정보
         SQLiteDatabase db = getWritableDatabase();
         String num = makenum();
-        Log.d(tag,num);
+        Log.d(tag, num);
         try {
             String sql = "INSERT INTO test (num,id, password,name) VALUES('" + num + "','" + id + "','" + password + "','" + name + "');";
             Log.d(tag, sql);
@@ -85,6 +85,7 @@ public class Datebase extends SQLiteOpenHelper {
     public void drop() {
         SQLiteDatabase db = getWritableDatabase();
         String sql = "DROP TABLE test";
+        Log.d(tag, "DROP TABLE");
         db.execSQL(sql);
     }
 
@@ -117,7 +118,7 @@ public class Datebase extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM test WHERE name = '" + id + "';", null);
         while (cursor.moveToNext()) {
             try {
-                String count = "count"+i;
+                String count = "count" + i;
                 JSONObject jsono = new JSONObject();
                 jsono.put("num", cursor.getString(0));
                 jsono.put("id", cursor.getString(1));
@@ -126,7 +127,7 @@ public class Datebase extends SQLiteOpenHelper {
                 jsono.put("date", cursor.getString(4));
                 jsono.put("purpose", cursor.getString(5));
                 jsonObject.put(jsono);
-                Log.d(tag+"Jsonarray ", String.valueOf(jsonObject));
+                Log.d(tag + "Jsonarray ", String.valueOf(jsonObject));
                 i++;
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -139,5 +140,6 @@ public class Datebase extends SQLiteOpenHelper {
     public String makenum() {
         return UUID.randomUUID().toString().replaceAll("-", "");
     }
+
 
 }

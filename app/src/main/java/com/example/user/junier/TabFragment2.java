@@ -84,17 +84,23 @@ public class TabFragment2 extends Fragment {
             @Override
             public void onClick(View view) {
                 String purpose = text.getText().toString();
-                helper.insertDate(uname,purpose, Date);
-                Log.d("updateDate 실행 ", purpose + "/" + Date);
-                Snackbar.make(view, "저장이 완료되었습니다.", Snackbar.LENGTH_SHORT).show();
+                int size = 1;
+                if (4 < size) {
+                    Snackbar.make(view, "목표는 4개 까지가 최대입니다. ", Snackbar.LENGTH_SHORT).show();
+                } else {
+                    helper.insertDate(uname, purpose, Date);
+                    Log.d("updateDate 실행 ", purpose + "/" + Date);
+                    Snackbar.make(view, "저장이 완료되었습니다.", Snackbar.LENGTH_SHORT).show();
+                    size++;
+                }
             }
         });
 
         return v;
     }
 
-        public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            Log.d(tag, "onActivityResult");
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(tag, "onActivityResult");
         try {
             if (requestCode == Result_Code) {
                 Date = data.getStringExtra("Date");
