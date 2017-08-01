@@ -33,34 +33,50 @@ public class TabFragment3 extends Fragment {
         listView = v.findViewById(R.id.list_view);
         adapter = new ListViewAdapter();
         listView.setAdapter(adapter);
-        adapter.addItem(ContextCompat.getDrawable(getActivity(),R.drawable.user),"  User Info");
-        adapter.addItem(ContextCompat.getDrawable(getActivity(),R.drawable.logout),"  Log out");
-        adapter.addItem(ContextCompat.getDrawable(getActivity(),R.drawable.plock),"  Phone Lock");
-        adapter.addItem(ContextCompat.getDrawable(getActivity(),R.drawable.facebook),"  Facebook");
+
+        adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.user), "  User Info");
+
+        adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.logout), "  Log out");
+
+        adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.plock), "  Phone Lock");
+
+        adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.facebook), "  Facebook");
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                switch (i){
-                    case 0 :{
-                        Intent intent = new Intent(getActivity(),UserInfo.class);
+                switch (i) {
+
+                    case 0: { //내가 가입한 정보보기
+
+                        Intent intent = new Intent(getActivity(), UserInfo.class);
                         startActivity(intent);
                         break;
+
                     }
-                    case 1 :{
-                        Intent intent = new Intent(getActivity(),Signin.class);
+
+                    case 1: { //로그아웃페이지
+
+                        Intent intent = new Intent(getActivity(), Signin.class);
                         startActivity(intent);
                         getActivity().finish();
+                        break;
+
                     }
-                    case 2 :{
-                        Intent intent = new Intent(getActivity(),Plock.class);
+                    case 2: { //폰잠금화면 알림설정 페이지
+
+                        Intent intent = new Intent(getActivity(), Plock.class);
                         startActivity(intent);
                         break;
                     }
-                    case 3:{
-                        Intent intent = new Intent(getActivity(),Facebook.class);
+                    case 3: { //페이스북 설정기능
+
+                        Intent intent = new Intent(getActivity(), Facebook.class);
                         startActivity(intent);
                         break;
+
                     }
 
                 }
@@ -70,9 +86,6 @@ public class TabFragment3 extends Fragment {
         });
         return v;
     }
-
-
-
 
 
 }

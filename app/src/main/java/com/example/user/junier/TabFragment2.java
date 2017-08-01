@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ public class TabFragment2 extends Fragment {
     private static String purpose;
     public static final int version = 2;
     private Datebase helper;
+    private SwitchCompat switchCompat;
 
     public TabFragment2(String uname) {
         this.uname = uname;
@@ -46,9 +48,13 @@ public class TabFragment2 extends Fragment {
         In.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Facebook Friend ", "Invite");
-                Intent intent1 = new Intent(getActivity(), Signup.class);
-                startActivity(intent1);
+                if(switchCompat != null) {
+                    Log.d("Facebook Friend ", "Invite");
+                    Intent intent1 = new Intent(getActivity(), InviteFriend.class);
+                    startActivity(intent1);
+                } else {
+                    Snackbar.make(view,"SNS 공유 버튼을 활성화 해주세요",Snackbar.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -120,6 +126,8 @@ public class TabFragment2 extends Fragment {
         btn2 = v.findViewById(R.id.two);
         btn3 = v.findViewById(R.id.three);
         save = v.findViewById(R.id.save);
+        switchCompat = v.findViewById(R.id.SnsOpen);
+
     }
 
 }

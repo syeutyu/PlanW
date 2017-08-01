@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static com.example.user.junier.MainActivity.tag;
+import static com.example.user.junier.TabFragment2.tag;
 import static com.example.user.junier.TabFragment2.version;
 
 /**

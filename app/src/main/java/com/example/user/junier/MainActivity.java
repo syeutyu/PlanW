@@ -74,11 +74,11 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d(tag, "onActivityResult");
         try{
-        if (requestCode == Result_Code) {
-            String Date = data.getStringExtra("Date");
-            Log.d("Date",Date);
-            daytext.setText(Date);
-        }
+            if (requestCode == Result_Code) {
+                String Date = data.getStringExtra("Date");
+                Log.d("Date",Date);
+                daytext.setText(Date);
+            }
         }catch (Exception e){
             e.getMessage();
         }

@@ -14,8 +14,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import static com.example.user.junier.MainActivity.Result_Code;
-import static com.example.user.junier.MainActivity.tag;
+import static com.example.user.junier.TabFragment2.Result_Code;
+import static com.example.user.junier.TabFragment2.tag;
+
 
 public class Day extends AppCompatActivity {
     public Boolean Datecheck = true;

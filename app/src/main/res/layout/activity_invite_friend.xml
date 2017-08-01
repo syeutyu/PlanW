@@ -4,13 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.junier.Facebook">
-    <com.facebook.login.widget.LoginButton
-        android:layout_gravity="center"
-        android:id="@+id/login_button"
-        android:layout_width="395dp"
-        android:layout_height="27dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
+    tools:context="com.example.user.junier.InviteFriend">
 
 </android.support.constraint.ConstraintLayout>

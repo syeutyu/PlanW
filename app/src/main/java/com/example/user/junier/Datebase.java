@@ -13,7 +13,8 @@ import org.json.JSONObject;
 
 import java.util.UUID;
 
-import static com.example.user.junier.MainActivity.tag;
+import static com.example.user.junier.TabFragment2.tag;
+
 
 /**
  * Created by user on 2017-07-29.

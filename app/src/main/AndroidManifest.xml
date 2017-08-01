@@ -15,9 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Day"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -64,7 +61,14 @@
         <activity android:name=".list_Item" />
         <activity android:name=".UserInfo" />
         <activity android:name=".Plock" />
-        <activity android:name=".Facebook"></activity>
+        <activity android:name=".Facebook" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider1391081634284434"
+            android:exported="true" />
+
+        <activity android:name=".InviteFriend"></activity>
     </application>
 
 </manifest>
