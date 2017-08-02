@@ -131,13 +131,22 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:src="@drawable/tiem_w" />
+            <TextView
+                android:id="@+id/datet1"
+                android:layout_marginBottom="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/img1"
+                android:layout_toRightOf="@id/img1"
+                android:gravity="center|left"
+                android:textColor="#ffff" />
 
             <TextView
                 android:id="@+id/pur1"
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:layout_below="@id/datet1"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/img1"
                 android:layout_weight="1"
@@ -145,15 +154,7 @@
                 android:text="Please Click Update Button"
                 android:textColor="#ffff" />
 
-            <TextView
-                android:id="@+id/datet1"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_above="@id/pur1"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/img1"
-                android:gravity="center|left"
-                android:textColor="#ffff" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -172,27 +173,26 @@
                 android:src="@drawable/tiem_w" />
 
             <TextView
+                android:id="@+id/datet2"
+                android:layout_marginBottom="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/img2"
+                android:layout_toRightOf="@id/img2"
+                android:gravity="center|left"
+                android:textColor="#ffff" />
+
+            <TextView
                 android:id="@+id/pur2"
+                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textSize="18sp"
+                android:layout_below="@id/datet2"
                 android:layout_marginLeft="10dp"
-
                 android:layout_toRightOf="@id/img2"
                 android:layout_weight="1"
                 android:gravity="center|left"
                 android:text="Please Click Update Button"
-                android:textColor="#ffff" />
-
-            <TextView
-                android:id="@+id/datet2"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_above="@id/pur2"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/img2"
-                android:gravity="center|left"
                 android:textColor="#ffff" />
         </RelativeLayout>
 
@@ -211,26 +211,27 @@
                 android:src="@drawable/time" />
 
             <TextView
+                android:id="@+id/datet3"
+                android:layout_marginBottom="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/img3"
+                android:layout_toRightOf="@id/img3"
+                android:gravity="center|left"
+                android:textColor="#ffff" />
+
+            <TextView
                 android:id="@+id/pur3"
+                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_below="@id/datet3"
                 android:layout_marginLeft="10dp"
-                android:textSize="18sp"
-
                 android:layout_toRightOf="@id/img3"
                 android:layout_weight="1"
                 android:gravity="center|left"
-                android:text="Please Click Update Button" />
-
-            <TextView
-                android:id="@+id/datet3"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_above="@id/pur3"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/img3"
-                android:gravity="center|left" />
+                android:text="Please Click Update Button"
+                android:textColor="#ffff" />
 
         </RelativeLayout>
 
@@ -248,26 +249,27 @@
                 android:src="@drawable/time" />
 
             <TextView
+                android:id="@+id/datet4"
+                android:layout_marginBottom="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/img4"
+                android:layout_toRightOf="@id/img4"
+                android:gravity="center|left"
+                android:textColor="#ffff" />
 
+            <TextView
                 android:id="@+id/pur4"
+                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_below="@id/datet4"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/img4"
                 android:layout_weight="1"
-                android:textSize="18sp"
                 android:gravity="center|left"
-                android:text="Please Click Update Button" />
-
-            <TextView
-                android:id="@+id/datet4"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_above="@id/pur4"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/img4"
-                android:gravity="center|left" />
+                android:text="Please Click Update Button"
+                android:textColor="#ffff" />
 
         </RelativeLayout>
 

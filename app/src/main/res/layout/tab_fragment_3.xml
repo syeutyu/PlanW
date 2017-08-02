@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <ListView
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:id="@+id/list_view"
         android:name="com.recipes4dev.examples.customlistfragmentexample1.CustomListFragment"
         android:layout_width="wrap_content"

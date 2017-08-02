@@ -53,6 +53,7 @@ public class Signin extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(),MainShow.class);
                     intent.putExtra("name",name);
                     startActivity(intent);
+                    finish();
                     }
             }
         });
