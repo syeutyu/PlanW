@@ -11,7 +11,9 @@ import android.support.annotation.Nullable;
  */
 
 public class ScereenService extends Service {
-    ScreenReceiver receiver=null;
+    ScreenReceiver receiver = null;
+    String uname;
+
 
     @Nullable
     @Override
@@ -23,7 +25,7 @@ public class ScereenService extends Service {
     public void onCreate() {
         super.onCreate();
 
-        receiver = new ScreenReceiver();
+        receiver = new ScreenReceiver(uname);
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
         registerReceiver(receiver, filter);
 
@@ -32,12 +34,12 @@ public class ScereenService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-         super.onStartCommand(intent, flags, startId);
-
-        if(intent != null){
-            if(intent.getAction()==null){
-                if(receiver==null){
-                    receiver = new ScreenReceiver();
+        super.onStartCommand(intent, flags, startId);
+        uname = intent.getStringExtra("id");
+        if (intent != null) {
+            if (intent.getAction() == null) {
+                if (receiver == null) {
+                    receiver = new ScreenReceiver(uname);
                     IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
                     registerReceiver(receiver, filter);
                 }

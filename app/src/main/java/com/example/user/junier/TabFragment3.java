@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +74,8 @@ public class TabFragment3 extends Fragment {
                     case 2: { //폰잠금화면 알림설정 페이지
 
                         Intent intent = new Intent(getActivity(), Plock.class);
+                        Log.d("first",uname);
+                        intent.putExtra("id",uname);
                         startActivity(intent);
                         break;
                     }

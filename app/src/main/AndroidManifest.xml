@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.junier">
 
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <uses-permisson android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 
@@ -61,7 +63,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".list_Item" />
         <activity android:name=".UserInfo" />
-        <activity android:name=".Plock" android:excludeFromRecents="true" android:launchMode="singleTask" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Plock"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity android:name=".Facebook" />
 
         <provider
@@ -70,9 +76,14 @@
             android:exported="true" />
 
         <activity android:name=".InviteFriend" />
-        <activity android:name=".LockPage" />
+        <activity
+            android:name=".LockPage"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
         <receiver android:name=".ScreenReceiver" />
-        <service android:name=".ScereenService"/>
+        <service android:name=".ScereenService" />
 
 
     </application>

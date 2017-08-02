@@ -9,10 +9,10 @@ import android.util.Log;
 
 public class MainShow extends AppCompatActivity {
     private TabLayout tabLayout;
-    TabFragment1 fragment1;
-    TabFragment2 fragment2;
-    TabFragment3 fragment3;
-    String uname;
+    private TabFragment1 fragment1;
+    private TabFragment2 fragment2;
+    private TabFragment3 fragment3;
+    private String uname;
 
 
     @Override
@@ -21,10 +21,10 @@ public class MainShow extends AppCompatActivity {
         setContentView(R.layout.activity_main_show);
         Intent intent = getIntent();
         uname = intent.getStringExtra("name");
-        Log.v("name is : ",uname);
+        Log.v("name is : ", uname);
 
 
-                // Initializing the TabLayout
+        // Initializing the TabLayout
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Main Page "));
         tabLayout.addTab(tabLayout.newTab().setText("Plan Page"));
