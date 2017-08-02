@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,10 +48,14 @@ public class TabFragment2 extends Fragment {
         View v = inflater.inflate(R.layout.activity_main, container, false);
         helper = new Datebase(getActivity(), Datebase.Schema, null, version);
         setting(v);
-        switchCompat.setOnClickListener(new View.OnClickListener() {
+        switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                check = true;
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    check = true;
+                } else{
+                    check = false;
+                }
             }
         });
         In.setOnClickListener(new View.OnClickListener() {

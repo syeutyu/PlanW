@@ -217,8 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/img3"
                 android:layout_toRightOf="@id/img3"
-                android:gravity="center|left"
-                android:textColor="#ffff" />
+                android:gravity="center|left" />
 
             <TextView
                 android:id="@+id/pur3"
@@ -230,8 +229,7 @@
                 android:layout_toRightOf="@id/img3"
                 android:layout_weight="1"
                 android:gravity="center|left"
-                android:text="Please Click Update Button"
-                android:textColor="#ffff" />
+                android:text="Please Click Update Button" />
 
         </RelativeLayout>
 
@@ -255,8 +253,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/img4"
                 android:layout_toRightOf="@id/img4"
-                android:gravity="center|left"
-                android:textColor="#ffff" />
+                android:gravity="center|left" />
 
             <TextView
                 android:id="@+id/pur4"
@@ -269,7 +266,7 @@
                 android:layout_weight="1"
                 android:gravity="center|left"
                 android:text="Please Click Update Button"
-                android:textColor="#ffff" />
+/>
 
         </RelativeLayout>
 

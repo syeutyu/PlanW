@@ -1,6 +1,7 @@
 package com.example.user.junier;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +52,7 @@ public class TabFragment1 extends Fragment {
             public void onClick(View view) {
                 jsonArray = database.getPlan(uname);
                 Log.d("json Ojbect get plan :", String.valueOf(jsonArray));
+                Snackbar.make(view,"Data Update",Snackbar.LENGTH_SHORT).show();
                 setText(jsonArray);
 
             }
