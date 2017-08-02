@@ -2,6 +2,7 @@ package com.example.user.junier;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -12,16 +13,18 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import static com.example.user.junier.TabFragment2.version;
+
 /**
  * Created by user on 2017-07-28.
  */
 
 public class TabFragment3 extends Fragment {
     private String uname;
-    private Datebase database;
     private ListView listView;
-    ArrayList<list_Item> list;
-    ListViewAdapter adapter;
+    private ArrayList<list_Item> list;
+    private ListViewAdapter adapter;
+    private Datebase database;
 
     public TabFragment3(String uname) {
         this.uname = uname;
@@ -41,6 +44,8 @@ public class TabFragment3 extends Fragment {
         adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.plock), "  Phone Lock");
 
         adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.facebook), "  Facebook");
+
+        adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.delete), "  Data Reset");
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -77,6 +82,13 @@ public class TabFragment3 extends Fragment {
                         startActivity(intent);
                         break;
 
+                    }
+
+                    case 4 : {
+                        database = new Datebase(getActivity(),Datebase.Schema,null,version);
+                        database.delete();
+                        Snackbar.make(view,"데이터 초기화 완료 ",Snackbar.LENGTH_SHORT).show();
+                        break;
                     }
 
                 }

@@ -31,6 +31,9 @@ public class TabFragment2 extends Fragment {
     private static String purpose;
     public static final int version = 2;
     private Datebase helper;
+    private Boolean check = false;
+    private  static int size = 1;
+
     private SwitchCompat switchCompat;
 
     public TabFragment2(String uname) {
@@ -44,11 +47,16 @@ public class TabFragment2 extends Fragment {
         View v = inflater.inflate(R.layout.activity_main, container, false);
         helper = new Datebase(getActivity(), Datebase.Schema, null, version);
         setting(v);
-
+        switchCompat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check = true;
+            }
+        });
         In.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(switchCompat != null) {
+                if(check) {
                     Log.d("Facebook Friend ", "Invite");
                     Intent intent1 = new Intent(getActivity(), InviteFriend.class);
                     startActivity(intent1);
@@ -90,14 +98,14 @@ public class TabFragment2 extends Fragment {
             @Override
             public void onClick(View view) {
                 String purpose = text.getText().toString();
-                int size = 1;
+                Log.d(tag+"배열 크기 ",String.valueOf(size));
                 if (4 < size) {
                     Snackbar.make(view, "목표는 4개 까지가 최대입니다. ", Snackbar.LENGTH_SHORT).show();
                 } else {
+                    size++;
                     helper.insertDate(uname, purpose, Date);
                     Log.d("updateDate 실행 ", purpose + "/" + Date);
                     Snackbar.make(view, "저장이 완료되었습니다.", Snackbar.LENGTH_SHORT).show();
-                    size++;
                 }
             }
         });

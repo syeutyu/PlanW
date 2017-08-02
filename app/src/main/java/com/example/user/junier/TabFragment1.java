@@ -27,7 +27,7 @@ import static com.example.user.junier.TabFragment2.version;
 public class TabFragment1 extends Fragment {
     private static String uname;
     private RelativeLayout linearLayout;
-    private TextView count, fini, pur1, pur2, pur3, pur4,datet1,datet2,datet3,datet4;
+    private TextView count, fini, pur1, pur2, pur3, pur4, datet1, datet2, datet3, datet4;
     private ImageButton imageButton;
     private Datebase database;
     private String date, purpose;
@@ -86,37 +86,40 @@ public class TabFragment1 extends Fragment {
                 purpose = JsonData.getString("purpose");
                 date = JsonData.getString("date");
                 if (i == 1) {
-                    datet1.setText("Plan Date is :"+date);
-                    pur1.setText("Plan Purpose is : "+purpose);
+                    datet1.setText("Plan Date is :" + date);
+                    pur1.setText("Plan Purpose is : " + purpose);
                 } else if (i == 2) {
-                    datet2.setText("Plan Date is :"+date);
-                    pur2.setText("Plan Purpose is : "+purpose);
+                    datet2.setText("Plan Date is :" + date);
+                    pur2.setText("Plan Purpose is : " + purpose);
 
                 } else if (i == 3) {
-                    datet3.setText("Plan Date is :"+date);
-                    pur3.setText("Plan Purpose is : "+purpose);
+                    datet3.setText("Plan Date is :" + date);
+                    pur3.setText("Plan Purpose is : " + purpose);
 
                 } else if (i == 4) {
-                    datet4.setText("Plan Date is :"+date);
-                    pur4.setText("Plan Purpose is : "+purpose);
+                    datet4.setText("Plan Date is :" + date);
+                    pur4.setText("Plan Purpose is : " + purpose);
                 }
 
             }
 
             count.setText(getTime());
-            fini.setText(String.valueOf(jsonArray.length()-1));
-
+            if (jsonArray.length() == 0) {
+                fini.setText(String.valueOf(jsonArray.length()));
+            } else {
+                fini.setText(String.valueOf(jsonArray.length() - 1));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    private String getTime(){
-        long time  = System.currentTimeMillis();
+    private String getTime() {
+        long time = System.currentTimeMillis();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String day = simpleDateFormat.format(new Date(time));
-        Log.d("오늘 날짜",day);
+        Log.d("오늘 날짜", day);
 
         return day;
     }

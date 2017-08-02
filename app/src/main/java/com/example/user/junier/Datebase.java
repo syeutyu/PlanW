@@ -83,10 +83,10 @@ public class Datebase extends SQLiteOpenHelper {
         }
     }
 
-    public void drop() {
+    public void delete() {
         SQLiteDatabase db = getWritableDatabase();
-        String sql = "DROP TABLE test";
-        Log.d(tag, "DROP TABLE");
+        String sql = "DELETE FROM test";
+        Log.d(tag, "DELETE TABLE");
         db.execSQL(sql);
     }
 
