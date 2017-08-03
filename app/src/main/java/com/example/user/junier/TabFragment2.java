@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+
 /**
  * Created by user on 2017-07-28.
  */
@@ -33,7 +35,6 @@ public class TabFragment2 extends Fragment {
     public static final int version = 2;
     private Datebase helper;
     private Boolean check = false;
-    private  static int size = 1;
 
     private SwitchCompat switchCompat;
 
@@ -103,11 +104,11 @@ public class TabFragment2 extends Fragment {
             @Override
             public void onClick(View view) {
                 String purpose = text.getText().toString();
-                Log.d(tag+"배열 크기 ",String.valueOf(size));
-                if (4 < size) {
+                JSONArray jsonArray = helper.getPlan(uname);
+
+                if (4 < jsonArray.length()) {
                     Snackbar.make(view, "목표는 4개 까지가 최대입니다. ", Snackbar.LENGTH_SHORT).show();
                 } else {
-                    size++;
                     helper.insertDate(uname, purpose, Date);
                     Log.d("updateDate 실행 ", purpose + "/" + Date);
                     Snackbar.make(view, "저장이 완료되었습니다.", Snackbar.LENGTH_SHORT).show();

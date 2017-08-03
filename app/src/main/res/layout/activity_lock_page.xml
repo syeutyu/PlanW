@@ -27,6 +27,7 @@
     <LinearLayout
         android:id="@+id/Linear"
         android:layout_below="@id/rela"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">

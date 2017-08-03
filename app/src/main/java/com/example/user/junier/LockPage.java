@@ -1,13 +1,14 @@
 package com.example.user.junier;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -26,7 +27,7 @@ public class LockPage extends AppCompatActivity {
     private String uname;
     private JSONArray jsonArray;
     private JSONObject jsonObject;
-    private String purpose;
+    private String purpose,date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,23 +44,29 @@ public class LockPage extends AppCompatActivity {
 
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
-                jsonObject = jsonArray.getJSONObject(i);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            try {
-                purpose = jsonObject.getString("purpose");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
 
-            //이부분 테스트해야 되네
-            textViews[i] = new TextView(this);
-            textViews[i].setLayoutParams(linearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            textViews[i].setTextSize(23);
-            textViews[i].setGravity(Gravity.CENTER);
-            textViews[i].setText(purpose);
-            linearLayout.addView(textViews[i]);
+
+                jsonObject = jsonArray.getJSONObject(i);
+                purpose = jsonObject.getString("purpose");
+                date = jsonObject.getString("date");
+                Log.d(tag + "텍스트", purpose);
+                //이부분 테스트해야 되네
+                textViews[i] = new TextView(getApplicationContext());
+                textViews[i].setTextColor(Color.WHITE);
+                textViews[i].setTextSize(20);
+                textViews[i].setGravity(Gravity.CENTER);
+                textViews[i].setText("수행 목표 : "+purpose + " \n 기간 : "+date);
+                linearLayout.addView(textViews[i]);
+
+                ViewGroup.MarginLayoutParams margin =
+                        new ViewGroup.MarginLayoutParams(textViews[i].getLayoutParams());
+                margin.setMargins(0, 24, 0, 70);
+                textViews[i].setLayoutParams(new LinearLayout.LayoutParams(margin));
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
         }
 
