@@ -112,12 +112,12 @@ public class Day extends AppCompatActivity {
                     }
 
                 }
+                if (check == true) {
 
                 if (arr.size() < 7) {
 
                     Log.v("check 값 : ", String.valueOf(check));
 
-                    if (check == true) {
 
                         arr.add(num);
                         Log.v("data 날짜", String.valueOf(arr.size()));
@@ -155,11 +155,9 @@ public class Day extends AppCompatActivity {
 
                         day.setText(TextViewHelper.shrinkWithWordUnit(day, daydata, 100));
 
-                    }
-                } else {
-
-                    Toast.makeText(getApplicationContext(), "입력가능한 일수를 초과했습니다.", Toast.LENGTH_SHORT).show();
-
+                    } else{
+                        Toast.makeText(getApplicationContext(), "7일이후는 선택하실수 없습니다",Toast.LENGTH_SHORT).show();
+                }
                 }
 
                 if (check == false) {
