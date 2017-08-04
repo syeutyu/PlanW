@@ -38,8 +38,6 @@ public class TabFragment3 extends Fragment {
         adapter = new ListViewAdapter();
         listView.setAdapter(adapter);
 
-        adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.user), "  User Info");
-
         adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.logout), "  Log out");
 
         adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.plock), "  Phone Lock");

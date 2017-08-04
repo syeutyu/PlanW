@@ -11,15 +11,20 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
+
+import static com.example.user.junier.TabFragment2.Result_Code;
+import static com.example.user.junier.TabFragment2.tag;
 
 public class Week extends AppCompatActivity {
 
-    String daydata;
+    public Boolean Datecheck = true;
+    public static String daydata;
+    private int count = 0;
     public static String num;
     public ArrayList<String> arr = new ArrayList<>();
+    private String sday1,sday2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +44,16 @@ public class Week extends AppCompatActivity {
 
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-
-
-                String numdate = compareDate(year, month, dayOfMonth);
-
-                int nowday = getNowDate();
-                int numday = Integer.parseInt(numdate);
-                num = year + "," + (month + 1) + "," + dayOfMonth;
-
-                addAndDeleteDate(context, day, nowday, numday,num);
+                Datecheck = getNowDate(year, month, dayOfMonth);
+        if(count ==0) {
+            num = (month + 1) + "," + dayOfMonth + "  ";
+            sday1 = num;
+            count++;
+        } else if(count == 1){
+            num = (month + 1) + "," + dayOfMonth + "  ";
+            sday2 = num;
+        }
+                addAndDeleteDate(context, day, sday1,sday2);
             }
         });
 
@@ -57,62 +63,74 @@ public class Week extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, MainActivity.class);
-                startActivity(intent);
+                intent.putExtra("Date", daydata);
+                setResult(Result_Code, intent);
                 finish();
 
             }
         });
     }
 
-    public int getNowDate() {
-        long now = System.currentTimeMillis();
-        Date date = new Date(now);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        Log.d("날자", String.valueOf(sdf));
-        String getTime = sdf.format(date);
+    public Boolean getNowDate(int year, int month, int dayOfMonth) {
+        Calendar aDate = Calendar.getInstance();
+        Calendar bDate = Calendar.getInstance();
+            aDate.set(year, month, dayOfMonth);
+            aDate.set(Calendar.HOUR_OF_DAY, 0);
+            aDate.set(Calendar.MINUTE, 0);
+            aDate.set(Calendar.SECOND, 0);
+            aDate.set(Calendar.MILLISECOND, 0);
 
-        int time = Integer.parseInt(getTime);
+            bDate.set(Calendar.HOUR_OF_DAY, 0);
+            bDate.set(Calendar.MINUTE, 0);
+            bDate.set(Calendar.SECOND, 0);
+            bDate.set(Calendar.MILLISECOND, 0);
 
-        Log.d("현재 날자", String.valueOf(time));
-        return time;
+
+            if (aDate.after(bDate)) {
+                Log.v(tag, "일수가 더 큼");
+                return true;
+            } else if (aDate.before(bDate)) {
+                Log.v(tag, "일수가 더 작음");
+                return false;
+            } else {
+                Log.v(tag, "일수가 같음");
+                return true;
+            }
+
     }
 
-    public String compareDate(int year, int month, int dayOfMonth) {
-        if ((month + 1) < 10) {
-            return year + "" + "0" + (month + 1) + dayOfMonth;
-        } else {
-            return year + "" + (month + 1) + dayOfMonth;
-        }
-    }
-
-    public void addAndDeleteDate(Context context, TextView day, int nowday, int numday,String num) {
+    public void addAndDeleteDate(Context context, TextView day, String sday1,String sday2) {
+        Boolean check = true;
         String data = null;
         daydata = null;
-        Boolean check = true;
-        if (nowday <= numday) {
+
+        if (Datecheck == true) {
             try {
                 for (int i = 0; i < arr.size(); i++) {
 
-                    if (num.equals(arr.get(i))) {
-
+                    if (sday1.equals(arr.get(i))) {
+                        Log.d("일치하는 데이터 찾음", arr.get(i));
                         check = false;
                         break;
-                    } else {
+                    } else if(sday2.equals(arr.get(i)))
+                    {
+                        check = false;
+                    } else{
                         check = true;
                     }
 
                 }
+                if (check == true) {
 
-                if (arr.size() < 7) {
+                    if (arr.size() < 2) {
 
-                    Log.v("check 값 : ", String.valueOf(check));
+                        Log.v("check 값 : ", String.valueOf(check));
 
-                    if (check == true) {
 
                         arr.add(num);
                         Log.v("data 날짜", String.valueOf(arr.size()));
 
-                        Toast.makeText(this, num + "이 저장되었습니다. ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), num + "이 저장되었습니다. ", Toast.LENGTH_SHORT).show();
 
                         for (int i = 0; i < arr.size(); i++) {
 
@@ -135,7 +153,7 @@ public class Week extends AppCompatActivity {
                                 daydata = ch2[1];
 
                             } else {
-                                if (i == 7) {
+                                if (i == 2) {
                                     Log.v("오류 ", ch[i - 1]);
                                 }
                                 daydata = ch[i - 1];
@@ -145,11 +163,9 @@ public class Week extends AppCompatActivity {
 
                         day.setText(TextViewHelper.shrinkWithWordUnit(day, daydata, 100));
 
+                    } else{
+                        Toast.makeText(getApplicationContext(), "2일이후는 선택하실수 없습니다",Toast.LENGTH_SHORT).show();
                     }
-                } else {
-
-                    Toast.makeText(getApplicationContext(), "입력가능한 일수를 초과했습니다.", Toast.LENGTH_SHORT).show();
-
                 }
 
                 if (check == false) {

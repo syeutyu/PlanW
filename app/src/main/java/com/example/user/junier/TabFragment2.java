@@ -87,16 +87,14 @@ public class TabFragment2 extends Fragment {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Week화면 출력", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), Week.class);
-                startActivity(intent);
+                Snackbar.make(view,"VetaVersion 1.0.0은 Day만 지원합니다",Snackbar.LENGTH_SHORT).show();
             }
         });
 
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "three 출력", Toast.LENGTH_SHORT).show();
+                Snackbar.make(view,"VetaVersion 1.0.0은 Day만 지원합니다",Snackbar.LENGTH_SHORT).show();
             }
         });
 
