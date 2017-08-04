@@ -53,15 +53,8 @@ public class TabFragment3 extends Fragment {
 
                 switch (i) {
 
-                    case 0: { //내가 가입한 정보보기
 
-                        Intent intent = new Intent(getActivity(), UserInfo.class);
-                        startActivity(intent);
-                        break;
-
-                    }
-
-                    case 1: { //로그아웃페이지
+                    case 0: { //로그아웃페이지
 
                         Intent intent = new Intent(getActivity(), Signin.class);
                         startActivity(intent);
@@ -69,7 +62,7 @@ public class TabFragment3 extends Fragment {
                         break;
 
                     }
-                    case 2: { //폰잠금화면 알림설정 페이지
+                    case 1: { //폰잠금화면 알림설정 페이지
 
                         Intent intent = new Intent(getActivity(), Plock.class);
                         Log.d("first",uname);
@@ -77,7 +70,7 @@ public class TabFragment3 extends Fragment {
                         startActivity(intent);
                         break;
                     }
-                    case 3: { //페이스북 설정기능
+                    case 2: { //페이스북 설정기능
 
                         Intent intent = new Intent(getActivity(), Facebook.class);
                         startActivity(intent);
@@ -85,7 +78,7 @@ public class TabFragment3 extends Fragment {
 
                     }
 
-                    case 4 : {
+                    case 3 : {
                         database = new Datebase(getActivity(),Datebase.Schema,null,version);
                         database.delete();
                         Snackbar.make(view,"데이터 초기화 완료 ",Snackbar.LENGTH_SHORT).show();
